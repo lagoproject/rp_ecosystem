@@ -1,4 +1,4 @@
-# rp\_ecosystem
+# LAGO Ecosystem
 
 ## What is LAGO Ecosystem?
 
