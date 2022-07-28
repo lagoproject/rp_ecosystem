@@ -1,8 +1,8 @@
 # rp\_ecosystem
 
-## What is LAGO Ecosystem?
+## What is Red Pitaya (rp) Ecosystem?
 
-Lago Ecosystem is a build system for quick prototyping and working with the Zynq SoCs.
+rp\_ecosystem is a build system for quick prototyping and working with the Zynq SoCs on the Red Pitaya instrument.
 
 ## Quickstart with the [Red Pitaya](http://redpitaya.com)
 
@@ -32,11 +32,11 @@ $ sudo apt-get --no-install-recommends install \
     libssl-dev qemu-user-static binfmt-support \
     dosfstools parted debootstrap
 
-$ git clone https://github.com/lagoprojectrp/lago_ecosystem
-$ cd lago_ecosystem
+$ git clone https://github.com/lharnaldi/rp_ecosystem
+$ cd rp_ecosystem
 ```
 
-### 2. Install LAGO Linux for Red Pitaya ([Download SD card image](https://mega.nz/file/MlIXyIiL#hFldQIGeu7P3557xQ08-mS_aAookaet5dWj9iWxgx3Q))
+### 2. Install Linux for Red Pitaya ([Download SD card image](https://mega.nz/file/MlIXyIiL#hFldQIGeu7P3557xQ08-mS_aAookaet5dWj9iWxgx3Q))
 
 ### 3. Build and run the minimal instrument
 
@@ -44,6 +44,10 @@ $ cd lago_ecosystem
 $ source settings.sh
 $ make NAME=led_blinker
 ```
-### 4. Documentation (in spanish)
+<!-- ### 4. Documentation (in spanish)
 You can read the official documentation in the following link-> ([Official documentation](https://mega.nz/file/go5jGaxI#yAPNhnzwa18UFw0HiC4y9pNHfYLi5F2QwN8MDeZ5Lb0))
+-->
 
+## Branches
+### lago
+### pfb
