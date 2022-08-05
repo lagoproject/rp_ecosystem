@@ -17,6 +17,7 @@ CORES = axi_axis_reader_v1_0 \
 				axi_bram_reader_v1_0 \
 				axi_cfg_register_v1_0 \
 				axi_sts_register_v1_0 \
+				axi_time_trig_gen_v1_0 \
 				axis_avgr16bits_v1_0 \
 				axis_avgr32bits_v1_0 \
 				axis_avgr_v1_0 \
