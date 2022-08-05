@@ -26,16 +26,19 @@ CORES = axi_axis_reader_v1_0 \
 				axis_constant_v1_0 \
 				axis_counter_v1_0 \
 				axis_dc_removal_v1_0 \
+				axis_decimator_v1_0 \
 				axis_fifo_v1_0 \
 				axis_generator_v1_0 \
 				axis_gpio_reader_i_v1_0 \
 				axis_gpio_reader_v1_0 \
 				axis_histogram_v1_0 \
 				axis_histogram_v1_1 \
+				axis_interpolator_v1_0 \
 				axis_lago_trigger_v1_0 \
 				axis_lago_trigger_v1_1 \
 				axis_lago_trigger_v1_2 \
 				axis_lago_trigger_v1_3 \
+				axis_lfsr_v1_0 \
 				axis_lpf_v1_0 \
 				axis_packetizer_v1_0 \
 				axis_ram_writer_v1_0 \
@@ -61,7 +64,7 @@ CORES = axi_axis_reader_v1_0 \
 				pwm_gen_v1_0 \
 				ramp_gen_v1_0 \
 				selector_v1_0 \
-				time_trig_gen_v1_0
+				time_trig_gen_v1_0 
 
 VIVADO = vivado -nolog -nojournal -mode batch
 XSCT = xsct
