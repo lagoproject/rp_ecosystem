@@ -52,4 +52,4 @@ cell labdpr:user:axi_sts_register sts_0 {
   sts_data concat_0/dout
 }
 
-addr 0x40000000 4K sts_0/S_AXI /ps_0/M_AXI_GP0
+addr 0x40002000 4K sts_0/S_AXI /ps_0/M_AXI_GP0
