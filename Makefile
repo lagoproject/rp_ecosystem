@@ -35,6 +35,7 @@ CORES = axi_axis_reader_v1_0 \
 				axis_lago_trigger_v1_1 \
 				axis_lago_trigger_v1_2 \
 				axis_lago_trigger_v1_3 \
+				axis_lpf_v1_0 \
 				axis_packetizer_v1_0 \
 				axis_ram_writer_v1_0 \
 				axis_rp_adc_v1_0 \
