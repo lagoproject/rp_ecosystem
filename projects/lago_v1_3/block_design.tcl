@@ -221,8 +221,8 @@ module fadc_0 {
   writer_0/sts_data sts_0/sts_data 
   pps_0/resetn_i rst_1/peripheral_aresetn 
   pps_0/int_o axi_intc_0/intr
-	writer_0/cfg_data cfg_ram_wr/dout
 	writer_0/M_AXI ps_0/S_AXI_ACP
+	writer_0/cfg_data cfg_ram_wr/dout
 	tlast_gen_0/pkt_length nsamples/dout
 	pps_0/gpsen_i gpsen/dout
   pps_0/pps_i exp_n_tri_io
