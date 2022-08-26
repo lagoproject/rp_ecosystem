@@ -51,7 +51,8 @@ begin
   comp_next <= '0' when (cntr_reg = unsigned(cfg_data)-1) else '1';
 
   cntr_next <= cntr_reg + 1 when ((comp_reg = '1') and (m_axis_tready = '1')) else
-               (others => '0') when (comp_reg = '0') else --reset
+  --cntr_next <= cntr_reg + 1 when ((comp_reg = '1') and (m_axis_tready = '1')) else
+               --(others => '0') when (comp_reg = '0') else --reset
                cntr_reg;
 
   m_axis_tdata <= std_logic_vector(resize(cntr_reg, m_axis_tdata'length));
