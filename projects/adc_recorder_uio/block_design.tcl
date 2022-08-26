@@ -237,5 +237,16 @@ cell labdpr:user:axis_ram_writer writer_0 {
   aresetn slice_2/dout
 }
 
+# Create axi_sts_register
+cell labdpr:user:axi_sts_register sts_0 {
+  STS_DATA_WIDTH 32
+  AXI_ADDR_WIDTH 32
+  AXI_DATA_WIDTH 32
+} { 
+  sts_data writer_0/sts_data 
+
+}
+
 addr 0x40001000 4K cfg_0/S_AXI /ps_0/M_AXI_GP0
 
+addr 0x40002000 4K sts_0/S_AXI /ps_0/M_AXI_GP0

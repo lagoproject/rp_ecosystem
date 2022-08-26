@@ -129,7 +129,7 @@
 
 extern int intc_fd, cfg_fd, sts_fd, xadc_fd, mem_fd, hst0_fd, hst1_fd, cma_fd;
 extern void *intc_ptr, *cfg_ptr, *sts_ptr, *xadc_ptr, *mem_ptr, *hst0_ptr, *hst1_ptr;
-extern int16_t *cma_ptr;
+extern volatile int16_t *cma_ptr;
 extern uint32_t dev_size;
 
 void     dev_write(void *dev_base, uint32_t offset, int32_t value);
