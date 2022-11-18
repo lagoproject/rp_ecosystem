@@ -36,8 +36,10 @@ mount $root_dev $root_dir
 
 # Copy files to the boot file system
 
+cd ..
 cp boot.bin devicetree.dtb uImage $boot_dir
 cp uEnv-ext4.txt $boot_dir/uEnv.txt
+cd -
 
 # Install Debian base system to the root file system
 

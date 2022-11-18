@@ -20,10 +20,10 @@ int main(int argc, char *argv[])
 	wr_reg_value(1, CFG_RESET_GRAL_OFFSET, val &= ~1,0);
 	printf("Reseting tlast_gen core...\n");
 	val=rd_reg_value(1, CFG_RESET_GRAL_OFFSET,0);
-	wr_reg_value(1, CFG_RESET_GRAL_OFFSET, val &=~4,0);
+	wr_reg_value(1, CFG_RESET_GRAL_OFFSET, val &=~2,0);
 	printf("Reseting writer...\n");
 	val=rd_reg_value(1, CFG_RESET_GRAL_OFFSET,0);
-	wr_reg_value(1, CFG_RESET_GRAL_OFFSET, val &= ~2,0);
+	wr_reg_value(1, CFG_RESET_GRAL_OFFSET, val &= ~4,0);
 
 	printf("Set writer address...\n");
 	val=rd_reg_value(1, CFG_WR_ADDR_OFFSET,0);
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 	wr_reg_value(1, CFG_RESET_GRAL_OFFSET, val |= 2,0);
   //writer
 	val=rd_reg_value(1, CFG_RESET_GRAL_OFFSET,0);
-	wr_reg_value(1, CFG_RESET_GRAL_OFFSET, val |=4,0);
+	wr_reg_value(1, CFG_RESET_GRAL_OFFSET, val |= 4,0);
 	// wait 1 second
 	sleep(2);
 	//counters
