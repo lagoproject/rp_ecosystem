@@ -32,7 +32,7 @@ $ sudo apt-get --no-install-recommends install \
     libssl-dev qemu-user-static binfmt-support \
     dosfstools parted debootstrap
 
-$ git clone https://github.com/lharnaldi/rp_ecosystem
+$ git clone https://github.com/lagoproject/rp_ecosystem
 $ cd rp_ecosystem
 ```
 
