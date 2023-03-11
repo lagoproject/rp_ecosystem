@@ -119,10 +119,10 @@ cell labdpr:user:axis_tlast_gen tlast_gen_0 {
   AXIS_TDATA_WIDTH 32
   PKT_CNTR_BITS 32
 } {
+  S_AXIS comb_0/M_AXIS
+  pkt_length slice_4/dout
   aclk pll_0/clk_out1
   aresetn slice_1/dout
-  pkt_length slice_4/dout
-  S_AXIS comb_0/M_AXIS
 }
 
 # Create axis_dwidth_converter
@@ -131,9 +131,9 @@ cell xilinx.com:ip:axis_dwidth_converter conv_0 {
   S_TDATA_NUM_BYTES 4
   M_TDATA_NUM_BYTES 8
 } {
+  S_AXIS tlast_gen_0/M_AXIS
   aclk pll_0/clk_out1
   aresetn slice_2/dout
-  S_AXIS tlast_gen_0/M_AXIS
 }
 
 # Create axis_ram_writer

@@ -1,31 +1,31 @@
 source projects/base_system/block_design.tcl
 
 # Create proc_sys_reset
-cell xilinx.com:ip:proc_sys_reset rst_0
+cell xilinx.com:ip:proc_sys_reset:5.0 rst_0
 
 # Create axi_cfg_register
-cell labdpr:user:axi_cfg_register cfg_0 {
+cell labdpr:user:axi_cfg_register:1.0 cfg_0 {
   CFG_DATA_WIDTH 96
   AXI_ADDR_WIDTH 32
   AXI_DATA_WIDTH 32
 }
 
 # Create xlslice
-cell xilinx.com:ip:xlslice slice_1 {
+cell xilinx.com:ip:xlslice:1.0 slice_1 {
   DIN_WIDTH 96 DIN_FROM 0 DIN_TO 0 DOUT_WIDTH 1
 } {
   Din cfg_0/cfg_data
 }
 
 # Create xlslice. Change the frequency
-cell xilinx.com:ip:xlslice slice_2 {
+cell xilinx.com:ip:xlslice:1.0 slice_2 {
   DIN_WIDTH 96 DIN_FROM 47 DIN_TO 32 DOUT_WIDTH 16
 } {
   Din cfg_0/cfg_data
 }
 
 #Create PWM generator
-cell labdpr:user:ramp_gen ramp_gen_0 {
+cell labdpr:user:ramp_gen:1.0 ramp_gen_0 {
   COUNT_NBITS 20
   COUNT_MOD 5000
   DATA_BITS 16

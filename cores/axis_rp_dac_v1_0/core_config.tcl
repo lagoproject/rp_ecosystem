@@ -1,4 +1,4 @@
-set display_name {AXI4-Stream Red Pitaya DAC v1.0}
+set display_name {AXI4-Stream Red Pitaya DAC}
 
 set core [ipx::current_core]
 

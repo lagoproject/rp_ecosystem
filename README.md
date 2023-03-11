@@ -1,4 +1,4 @@
-# LAGO Ecosystem
+# lago\_ecosystem
 
 ## What is LAGO Ecosystem?
 
@@ -6,20 +6,20 @@ Lago Ecosystem is a build system for quick prototyping and working with the Zynq
 
 ## Quickstart with the [Red Pitaya](http://redpitaya.com)
 
-### 1. Requirements for Ubuntu 20.04 Focal Fossa
+### 1. Requirements for Ubuntu 16.04
 
-#### 1.1. Download and install [`Vitis Core Development Kit 2020.2`](https://www.xilinx.com/products/design-tools/vitis.html).
+#### 1.1. Download [`Vivado HLx 2016.4: All OS Installer Single-File Download`](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/2016-4.html).
 
-<!--#### 1.2 Run
+#### 1.2 Run
 
 ```bash
 $ sudo apt-get install curl
 $ cd ~/Downloads
-$ curl https://raw.githubusercontent.com/lharnaldi/rp_ecosystem/lago/scripts/install_vivado.sh | sudo /bin/bash /dev/stdin
+$ curl https://raw.githubusercontent.com/lagoprojectrp/lago_ecosystem/master/scripts/install_vivado.sh | sudo /bin/bash /dev/stdin
 $ sudo ln -s make /usr/bin/gmake # tells Vivado to use make instead of gmake
 ```
--->
-#### 1.2. Install requirements
+
+#### 1.3. Install requirements
 
 ```bash
 $ sudo apt-get update
@@ -36,7 +36,7 @@ $ git clone https://github.com/lagoprojectrp/lago_ecosystem
 $ cd lago_ecosystem
 ```
 
-### 2. Install LAGO Linux for Red Pitaya ([Download SD card image](https://mega.nz/file/MlIXyIiL#hFldQIGeu7P3557xQ08-mS_aAookaet5dWj9iWxgx3Q))
+### 2. Install LAGO Linux for Red Pitaya ([Download SD card image](https://mega.nz/#!BxZgmLjY!I8BuaMg53Kzo_eZQKRjOMfJlu95qR2zWT_BbRXjgNVQ))
 
 ### 3. Build and run the minimal instrument
 
@@ -44,6 +44,4 @@ $ cd lago_ecosystem
 $ source settings.sh
 $ make NAME=led_blinker
 ```
-### 4. Documentation (in spanish)
-You can read the official documentation in the following link-> ([Official documentation](https://mega.nz/file/go5jGaxI#yAPNhnzwa18UFw0HiC4y9pNHfYLi5F2QwN8MDeZ5Lb0))
 

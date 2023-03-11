@@ -13,9 +13,9 @@ entity axis_rp_dac is
 );
 port (
   -- PLL signals
-  aclk    : in std_logic;
+  aclk : in std_logic;
   ddr_clk : in std_logic;
-  locked  : in std_logic;
+  locked : in std_logic;
 
   -- DAC signals
   dac_clk : out std_logic;
