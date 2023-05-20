@@ -3,11 +3,11 @@ device=$1
 boot_dir=`mktemp -d /tmp/BOOT.XXXXXXXXXX`
 root_dir=`mktemp -d /tmp/ROOT.XXXXXXXXXX`
 
-linux_dir=tmp/linux-4.14
-linux_ver=4.14.101-xilinx
+linux_dir=tmp/linux-4.20
+linux_ver=4.20.17-xilinx
 
-root_tar=ubuntu-base-14.04.5-base-armhf.tar.gz
-root_url=http://cdimage.ubuntu.com/ubuntu-base/releases/14.04/release/$root_tar
+root_tar=ubuntu-base-18.04.5-base-armhf.tar.gz
+root_url=http://cdimage.ubuntu.com/ubuntu-base/releases/18.04/release/$root_tar
 
 passwd=escondido
 timezone=America/Argentina/Mendoza
@@ -143,6 +143,10 @@ wpa_passphrase=RedPitaya
 wpa_key_mgmt=WPA-PSK
 wpa_pairwise=CCMP
 rsn_pairwise=CCMP
+EOF_CAT
+
+cat <<- EOF_CAT > etc/default/hostapd
+DAEMON_CONF=/etc/hostapd/hostapd.conf
 EOF_CAT
 
 cat <<- EOF_CAT > etc/dhcp/dhcpd.conf
