@@ -3,17 +3,18 @@ device=$1
 boot_dir=`mktemp -d /tmp/BOOT.XXXXXXXXXX`
 root_dir=`mktemp -d /tmp/ROOT.XXXXXXXXXX`
 
-linux_dir=tmp/linux-4.20
-linux_ver=4.20.17-xilinx
+linux_dir=tmp/linux-4.14
+linux_ver=4.14.42-xilinx
 
 # Choose mirror automatically, depending the geographic and network location
-mirror=http://deb.debian.org/debian
+#mirror=http://deb.debian.org/debian
+mirror=https://archive.debian.org/debian
 
-distro=buster
+distro=stretch
 arch=armhf
 
 passwd=escondido
-timezone=America/Argentina/Mendoza
+timezone=Europe/Brussels
 
 # Create partitions
 
@@ -89,6 +90,12 @@ cat <<- EOF_CAT > etc/fstab
 /dev/mmcblk0p1  /boot           vfat    defaults            0       2
 EOF_CAT
 
+cat <<- EOF_CAT >> etc/securetty
+
+# Serial Console for Xilinx Zynq-7000
+ttyPS0
+EOF_CAT
+
 echo lago > etc/hostname
 
 apt-get update
@@ -109,12 +116,6 @@ apt-get -y install openssh-server ca-certificates ntp ntpdate fake-hwclock \
   ifplugd ntfs-3g net-tools less
 
 sed -i 's/^#PermitRootLogin.*/PermitRootLogin yes/' etc/ssh/sshd_config
-
-cat <<- EOF_CAT >> etc/securetty
-
-# Serial Console for Xilinx Zynq-7000
-ttyPS0
-EOF_CAT
 
 touch etc/udev/rules.d/80-net-setup-link.rules
 
@@ -156,14 +157,6 @@ wpa_passphrase=RedPitaya
 wpa_key_mgmt=WPA-PSK
 wpa_pairwise=CCMP
 rsn_pairwise=CCMP
-EOF_CAT
-
-cat <<- EOF_CAT > etc/default/hostapd
-DAEMON_CONF=/etc/hostapd/hostapd.conf
-EOF_CAT
-
-cat <<- EOF_CAT > etc/default/isc-dhcp-server
-INTERFACESv4=wlan0
 EOF_CAT
 
 cat <<- EOF_CAT > etc/dhcp/dhcpd.conf

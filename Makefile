@@ -29,9 +29,6 @@ CORES = axi_axis_reader_v1_0 \
         axis_histogram_v1_0 \
         axis_histogram_v1_1 \
         axis_interpolator_v1_0 \
-        axis_lago_trigger_v1_0 \
-        axis_lago_trigger_v1_1 \
-        axis_lago_trigger_v1_2 \
         axis_lago_trigger_v1_3 \
         axis_lfsr_v1_0 \
         axis_lpf_v1_0 \
@@ -40,7 +37,6 @@ CORES = axi_axis_reader_v1_0 \
         axis_phase_generator_v1_0 \
         axis_ram_writer_v1_0 \
         axis_rp_adc_v1_0 \
-        axis_rp_dac_v1_0 \
         axis_rp_dac_v2_0 \
         axis_tlast_gen_v1_0 \
         axis_trigger_v1_0 \
@@ -56,7 +52,6 @@ CORES = axi_axis_reader_v1_0 \
         int_counter_v1_0 \
 				port_selector_v1_0 \
 				port_slicer_v1_0 \
-        pps_gen_v1_0 \
         pps_gen_v1_1 \
         pwm_gen_v1_0 \
         ramp_gen_v1_0 \
@@ -68,7 +63,7 @@ HSI = hsi -nolog -nojournal -mode batch
 RM = rm -rf
 
 UBOOT_TAG = xilinx-v2018.3
-LINUX_TAG = 4.20
+LINUX_TAG = 4.14
 DTREE_TAG = xilinx-v2018.3
 
 UBOOT_DIR = tmp/u-boot-xlnx-$(UBOOT_TAG)
@@ -80,12 +75,12 @@ LINUX_TAR = tmp/linux-$(LINUX_TAG).tar.xz
 DTREE_TAR = tmp/device-tree-xlnx-$(DTREE_TAG).tar.gz
 
 UBOOT_URL = https://github.com/Xilinx/u-boot-xlnx/archive/$(UBOOT_TAG).tar.gz
-LINUX_URL = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$(LINUX_TAG).17.tar.xz
+LINUX_URL = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$(LINUX_TAG).42.tar.xz
 DTREE_URL = https://github.com/Xilinx/device-tree-xlnx/archive/$(DTREE_TAG).tar.gz
 
-LINUX_CFLAGS = "-O2 -march=armv7-a -mtune=cortex-a9 -mfpu=neon -mfloat-abi=hard"
-UBOOT_CFLAGS = "-O2 -march=armv7-a -mtune=cortex-a9 -mfpu=neon -mfloat-abi=hard"
-ARMHF_CFLAGS = "-O2 -march=armv7-a -mtune=cortex-a9 -mfpu=neon -mfloat-abi=hard"
+LINUX_CFLAGS = "-O2 -march=armv7-a -mcpu=cortex-a9 -mtune=cortex-a9 -mfpu=neon -mfloat-abi=hard"
+UBOOT_CFLAGS = "-O2 -march=armv7-a -mcpu=cortex-a9 -mtune=cortex-a9 -mfpu=neon -mfloat-abi=hard"
+ARMHF_CFLAGS = "-O2 -march=armv7-a -mcpu=cortex-a9 -mtune=cortex-a9 -mfpu=neon -mfloat-abi=hard"
 
 RTL8188_TAR = tmp/rtl8188eu-v4.1.8_9499.tar.gz
 RTL8188_URL = https://github.com/lwfinger/rtl8188eu/archive/v4.1.8_9499.tar.gz
@@ -96,8 +91,6 @@ RTL8192_URL = https://github.com/pvaret/rtl8192cu-fixes/archive/master.tar.gz
 .PRECIOUS: tmp/cores/% tmp/%.xpr tmp/%.hwdef tmp/%.bit tmp/%.fsbl/executable.elf tmp/%.tree/system-top.dts
 
 all: boot.bin uImage devicetree.dtb
-
-cores: $(addprefix tmp/cores/, $(CORES))
 
 xpr: tmp/$(NAME).xpr
 
@@ -140,8 +133,6 @@ $(LINUX_DIR): $(LINUX_TAR) $(RTL8188_TAR) $(RTL8192_TAR)
 	tar -zxf $(RTL8188_TAR) --strip-components=1 --directory=$@/drivers/net/wireless/realtek/rtl8188eu
 	tar -zxf $(RTL8192_TAR) --strip-components=1 --directory=$@/drivers/net/wireless/realtek/rtl8192cu
 	patch -d tmp -p 0 < patches/linux-$(LINUX_TAG).patch
-	cp patches/zynq_ocm.c $@/arch/arm/mach-zynq
-	cp patches/cma.c $@/drivers/char
 	cp patches/xilinx_devcfg.c $@/drivers/char
 	cp patches/xilinx_zynq_defconfig $@/arch/arm/configs
 
@@ -192,7 +183,7 @@ tmp/%.bit: tmp/%.xpr
 tmp/%.fsbl/executable.elf: tmp/%.hwdef
 	mkdir -p $(@D)
 	$(HSI) -source scripts/fsbl.tcl -tclargs $* $(PROC)
-#
+
 tmp/%.tree/system-top.dts: tmp/%.hwdef $(DTREE_DIR)
 	mkdir -p $(@D)
 	$(HSI) -source scripts/devicetree.tcl -tclargs $* $(PROC) $(DTREE_DIR)
