@@ -16,7 +16,7 @@ export LC_ALL="en_US.UTF-8"
 # setup Xilinx Vivado FPGA tools
 ################################################################################
 
-. /tools/Xilinx/Vivado/2018.3/settings64.sh
+. /media/arnaldi/seagate4tb/xilinx/tools/Vivado/2018.3/settings64.sh
 
 ################################################################################
 # setup cross compiler toolchain

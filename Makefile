@@ -63,7 +63,7 @@ HSI = hsi -nolog -nojournal -mode batch
 RM = rm -rf
 
 UBOOT_TAG = xilinx-v2018.3
-LINUX_TAG = 4.14
+LINUX_TAG = 4.9
 DTREE_TAG = xilinx-v2018.3
 
 UBOOT_DIR = tmp/u-boot-xlnx-$(UBOOT_TAG)
