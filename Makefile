@@ -34,9 +34,6 @@ CORES = axi_axis_reader_v1_0 \
 				axis_histogram_v1_0 \
 				axis_histogram_v1_1 \
 				axis_interpolator_v1_0 \
-				axis_lago_trigger_v1_0 \
-				axis_lago_trigger_v1_1 \
-				axis_lago_trigger_v1_2 \
 				axis_lago_trigger_v1_3 \
 				axis_lfsr_v1_0 \
 				axis_lpf_v1_0 \
