@@ -57,7 +57,6 @@ CORES = axi_axis_reader_v1_0 \
 				int_counter_v1_0 \
 				port_selector_v1_0 \
 				port_slicer_v1_0 \
-				pps_gen_v1_0 \
 				pps_gen_v1_1 \
 				pwm_gen_v1_0 \
 				ramp_gen_v1_0 \
