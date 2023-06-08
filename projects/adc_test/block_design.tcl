@@ -122,7 +122,7 @@ cell xilinx.com:ip:axis_subset_converter subset_0 {
 } {
   S_AXIS adc_0/M_AXIS
   aclk pll_0/clk_out1
-  aresetn rst_0/peripheral_aresetn
+  aresetn slice_0/dout
 }
 
 # Create axis_constant
@@ -131,7 +131,7 @@ cell labdpr:user:axis_variable rate_0 {
 } {
   cfg_data slice_2/dout
   aclk pll_0/clk_out1
-  aresetn rst_0/peripheral_aresetn
+  aresetn slice_0/dout
 }
 
 # Create cic_compiler
@@ -154,17 +154,6 @@ cell xilinx.com:ip:cic_compiler cic_0 {
   S_AXIS_DATA subset_0/M_AXIS
   S_AXIS_CONFIG rate_0/M_AXIS
   aclk pll_0/clk_out1
-  aresetn rst_0/peripheral_aresetn
-}
-
-# Create axis_dwidth_converter
-cell xilinx.com:ip:axis_dwidth_converter conv_0 {
-  S_TDATA_NUM_BYTES.VALUE_SRC USER
-  S_TDATA_NUM_BYTES 2
-  M_TDATA_NUM_BYTES 8
-} {
-  S_AXIS cic_0/M_AXIS_DATA
-  aclk pll_0/clk_out1
   aresetn slice_0/dout
 }
 
@@ -174,8 +163,10 @@ cell xilinx.com:ip:axis_dwidth_converter conv_0 {
 cell labdpr:user:axis_ram_writer writer_0 {
   ADDR_WIDTH 16
   AXI_ID_WIDTH 3
+  AXIS_TDATA_WIDTH 16
+  FIFO_WRITE_DEPTH 2048
 } {
-  S_AXIS conv_0/M_AXIS
+  S_AXIS cic_0/M_AXIS_DATA
   M_AXI ps_0/S_AXI_ACP
   cfg_data slice_3/dout
   aclk pll_0/clk_out1
@@ -183,12 +174,6 @@ cell labdpr:user:axis_ram_writer writer_0 {
 }
 
 # GEN
-
-# Create axis_lfsr
-cell labdpr:user:axis_lfsr lfsr_0 {} {
-  aclk pll_0/clk_out1
-  aresetn rst_0/peripheral_aresetn
-}
 
 for {set i 0} {$i <= 1} {incr i} {
 
@@ -230,19 +215,14 @@ for {set i 0} {$i <= 1} {incr i} {
     aclk pll_0/clk_out1
   }
 
-  # Create xbip_dsp48_macro
-  cell xilinx.com:ip:xbip_dsp48_macro mult_$i {
-    INSTRUCTION1 RNDSIMPLE(A*B+CARRYIN)
-    A_WIDTH.VALUE_SRC USER
-    B_WIDTH.VALUE_SRC USER
-    OUTPUT_PROPERTIES User_Defined
+  # Create dsp48
+  cell labdpr:user:dsp48 mult_$i {
     A_WIDTH 24
     B_WIDTH 16
-    P_WIDTH 15
+    P_WIDTH 14
   } {
     A dds_$i/m_axis_data_tdata
     B slice_[expr $i + 6]/dout
-    CARRYIN lfsr_0/m_axis_tdata
     CLK pll_0/clk_out1
   }
 
@@ -293,7 +273,3 @@ addr 0x40000000 4K sts_0/S_AXI /ps_0/M_AXI_GP0
 addr 0x40001000 4K cfg_0/S_AXI /ps_0/M_AXI_GP0
 
 assign_bd_address [get_bd_addr_segs ps_0/S_AXI_ACP/ACP_DDR_LOWOCM]
-
-group_bd_cells PS7 [get_bd_cells rst_0] [get_bd_cells pll_0] [get_bd_cells const_0] [get_bd_cells ps_0] [get_bd_cells ps_0_axi_periph]
-group_bd_cells ACQ [get_bd_cells rate_0] [get_bd_cells adc_0] [get_bd_cells subset_0] [get_bd_cells slice_0] [get_bd_cells slice_1] [get_bd_cells conv_0] [get_bd_cells slice_2] [get_bd_cells cic_0] [get_bd_cells writer_0] [get_bd_cells slice_3]
-group_bd_cells CMPLX_GEN [get_bd_cells phase_1] [get_bd_cells mult_0] [get_bd_cells dds_0] [get_bd_cells dds_1] [get_bd_cells mult_1] [get_bd_cells dac_0] [get_bd_cells slice_4] [get_bd_cells slice_5] [get_bd_cells concat_0] [get_bd_cells slice_6] [get_bd_cells phase_0] [get_bd_cells lfsr_0]
