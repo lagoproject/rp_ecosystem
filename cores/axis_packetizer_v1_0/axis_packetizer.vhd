@@ -6,8 +6,8 @@ use ieee.numeric_std.all;
 entity axis_packetizer is
   generic (
   AXIS_TDATA_WIDTH : natural := 32;
-  CNTR_WIDTH    : natural    := 32;
-  CONTINUOUS    : string     := "FALSE"
+  CNTR_WIDTH       : natural := 32;
+  CONTINUOUS       : string  := "FALSE"
 );
 port (
   -- System signals
