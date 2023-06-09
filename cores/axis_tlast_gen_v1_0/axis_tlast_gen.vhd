@@ -16,16 +16,16 @@ port (
   -- Control signals
   pkt_length    : in std_logic_vector((PKT_CNTR_BITS-1) downto 0);
 
-  -- Master side
-  m_axis_tvalid : out std_logic;
-  m_axis_tready : in std_logic;
-  m_axis_tlast  : out std_logic;
-  m_axis_tdata  : out std_logic_vector(AXIS_TDATA_WIDTH-1 downto 0);
-
   -- Slave side
-  s_axis_tvalid : in std_logic;
   s_axis_tready : out std_logic;
-  s_axis_tdata  : in std_logic_vector(AXIS_TDATA_WIDTH-1 downto 0)
+  s_axis_tdata  : in std_logic_vector(AXIS_TDATA_WIDTH-1 downto 0);
+  s_axis_tvalid : in std_logic;
+
+  --Master side
+  m_axis_tready : in std_logic;
+  m_axis_tdata  : out std_logic_vector(AXIS_TDATA_WIDTH-1 downto 0);
+  m_axis_tvalid : out std_logic;
+  m_axis_tlast  : out std_logic
 );
 end axis_tlast_gen;
 
