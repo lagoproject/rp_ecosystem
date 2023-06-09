@@ -40,7 +40,7 @@ module ram_writer_0 {
         slice_3/din cfg_0/cfg_data
         slice_4/din cfg_0/cfg_data
         writer_0/sts_data sts_0/sts_data
-        tlast_gen_0/S_AXIS adc_0/M_AXIS
+        pktzr_0/S_AXIS adc_0/M_AXIS
 }
 
 addr 0x40001000 4K cfg_0/S_AXI /ps_0/M_AXI_GP0
