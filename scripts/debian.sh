@@ -13,7 +13,7 @@ distro=buster
 arch=armhf
 
 passwd=escondido
-timezone=Europe/Brussels
+timezone=America/Argentina/Mendoza
 
 # Create partitions
 

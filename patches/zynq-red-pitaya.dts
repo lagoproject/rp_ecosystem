@@ -18,7 +18,7 @@
 
 	memory@0 {
 		device_type = "memory";
-		reg = <0x0 0x20000000>;
+    reg = <0x0 0x1E000000>;
 	};
 
 	chosen {
@@ -54,6 +54,10 @@
 		compatible = "24c64";
 		reg = <0x50>;
 	};
+   bmp180@77{
+     compatible = "bosch,bmp280";
+     reg = <0x77>;
+     };
 };
 
 &sdhci0 {

@@ -31,7 +31,6 @@ CORES = axi_axis_reader_v1_0 \
 				axis_generator_v1_0 \
 				axis_gpio_reader_i_v1_0 \
 				axis_gpio_reader_v1_0 \
-				axis_histogram_v1_0 \
 				axis_histogram_v1_1 \
 				axis_interpolator_v1_0 \
 				axis_lago_trigger_v1_3 \
@@ -42,7 +41,6 @@ CORES = axi_axis_reader_v1_0 \
 				axis_phase_generator_v1_0 \
 				axis_ram_writer_v1_0 \
 				axis_rp_adc_v3_0 \
-				axis_rp_dac_v1_0 \
 				axis_rp_dac_v2_0 \
 				axis_tlast_gen_v1_0 \
 				axis_trigger_v1_0 \

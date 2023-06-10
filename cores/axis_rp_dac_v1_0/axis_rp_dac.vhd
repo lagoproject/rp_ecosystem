@@ -48,8 +48,8 @@ begin
   begin
   if rising_edge(aclk) then
     if (locked = '0' or s_axis_tvalid = '0') then
-    int_dat_a_reg <= (others => '0');
-    int_dat_b_reg <= (others => '0');
+    int_dat_a_reg <= "01111111111111";
+    int_dat_b_reg <= "01111111111111";
   else
     int_dat_a_reg <= int_dat_a_wire(DAC_DATA_WIDTH-1) & not int_dat_a_wire(DAC_DATA_WIDTH-2 downto 0);
     int_dat_b_reg <= int_dat_b_wire(DAC_DATA_WIDTH-1) & not int_dat_b_wire(DAC_DATA_WIDTH-2 downto 0);

@@ -201,7 +201,7 @@ int cfg_init(void)
 
 int sts_init(void)
 {
-	char *uiod = "/dev/uio4";
+	char *uiod = "/dev/uio2";
 
 	//printf("Initializing STS device...\n");
 
@@ -212,7 +212,7 @@ int sts_init(void)
 		return -1;
 	}
 
-	dev_size = get_memory_size("/sys/class/uio/uio4/maps/map0/size");
+	dev_size = get_memory_size("/sys/class/uio/uio2/maps/map0/size");
 
 	// mmap the STS device into user space
 	sts_ptr = mmap(NULL, dev_size, PROT_READ|PROT_WRITE, MAP_SHARED, sts_fd, 0);
@@ -226,7 +226,7 @@ int sts_init(void)
 
 int xadc_init(void)
 {
-	char *uiod = "/dev/uio5";
+	char *uiod = "/dev/uio3";
 
 	//printf("Initializing XADC device...\n");
 
@@ -237,7 +237,7 @@ int xadc_init(void)
 		return -1;
 	}
 
-	dev_size = get_memory_size("/sys/class/uio/uio5/maps/map0/size"); 
+	dev_size = get_memory_size("/sys/class/uio/uio3/maps/map0/size"); 
 
 	// mmap the XADC device into user space
 	xadc_ptr = mmap(NULL, dev_size, PROT_READ|PROT_WRITE, MAP_SHARED, xadc_fd, 0);
@@ -262,7 +262,7 @@ int mem_init(void)
 		return -1;
 	}
 
-	dev_size = 2048*sysconf(_SC_PAGESIZE);
+	dev_size = 1024*sysconf(_SC_PAGESIZE);
 
 	// mmap the mem device into user space 
 	mem_ptr = mmap(NULL, dev_size, PROT_READ|PROT_WRITE, MAP_SHARED, mem_fd, 0x1E000000);
