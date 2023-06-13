@@ -40,8 +40,8 @@ unordered_map<string, string> hConfigs;
 // Time globals for filenames
 //****************************************************
 time_t    fileTime;
-struct tm  *fileDate;
-int        falseGPS=0;
+struct tm *fileDate;
+int       falseGPS=0;
 
 //****************************************************
 // Metadata
