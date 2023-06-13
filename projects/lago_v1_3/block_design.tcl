@@ -195,11 +195,11 @@ cell labdpr:user:port_slicer reg_trig_scaler_b {
 }
 
 # Create port_slicer for cfg RAM writer. off=22
-cell labdpr:user:port_slicer cfg_ram_wr {
-  DIN_WIDTH 1024 DIN_FROM 735 DIN_TO 704
-} {
-  din cfg_0/cfg_data
-}
+#cell labdpr:user:port_slicer cfg_ram_wr {
+#  DIN_WIDTH 1024 DIN_FROM 735 DIN_TO 704
+#} {
+#  din cfg_0/cfg_data
+#}
 
 # Create xlslice for set the gpsen_i input
 cell labdpr:user:port_slicer gpsen {
@@ -221,8 +221,7 @@ module fadc_0 {
   writer_0/sts_data sts_0/sts_data 
   pps_0/resetn_i rst_1/peripheral_aresetn 
   pps_0/int_o axi_intc_0/intr
-	writer_0/M_AXI ps_0/S_AXI_ACP
-	writer_0/cfg_data cfg_ram_wr/dout
+	writer_0/M_AXI ps_0/S_AXI_HP0
 	tlast_gen_0/pkt_length nsamples/dout
 	pps_0/gpsen_i gpsen/dout
   pps_0/pps_i exp_n_tri_io
@@ -230,6 +229,7 @@ module fadc_0 {
   pps_0/pps_gps_led_o concat_0/In0
   pps_0/false_pps_led_o concat_0/In1
 }
+	#writer_0/cfg_data cfg_ram_wr/dout
 
 #Now all related to the DAC PWM
 # Create xlslice. off=0
@@ -331,6 +331,7 @@ addr 0x40002000 4K sts_0/S_AXI /ps_0/M_AXI_GP0
 
 addr 0x40003000 4K xadc_wiz_0/s_axi_lite /ps_0/M_AXI_GP0
 
+assign_bd_address [get_bd_addr_segs ps_0/S_AXI_HP0/HP0_DDR_LOWOCM]
 
 group_bd_cells PS7 [get_bd_cells rst_0] [get_bd_cells rst_1] [get_bd_cells pll_0] [get_bd_cells const_0] [get_bd_cells ps_0] [get_bd_cells ps_0_axi_periph]
 

@@ -66,6 +66,12 @@ cell xilinx.com:ip:axis_dwidth_converter conv_0 {
   aresetn /reset_2/Dout
 }
 
+# Create xlconstant
+cell xilinx.com:ip:xlconstant const_1 {
+  CONST_WIDTH 32
+  CONST_VAL 503316480
+}
+
 # Create axis_ram_writer
 cell labdpr:user:axis_ram_writer writer_0 {
   ADDR_WIDTH 20
@@ -74,6 +80,7 @@ cell labdpr:user:axis_ram_writer writer_0 {
   aclk /pll_0/clk_out1
   aresetn /reset_2/Dout
   S_AXIS conv_0/M_AXIS
-  M_AXI /ps_0/S_AXI_ACP
+  M_AXI /ps_0/S_AXI_HP0
+  cfg_data const_1/dout
 }
 

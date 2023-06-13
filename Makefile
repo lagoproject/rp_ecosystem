@@ -40,8 +40,8 @@ CORES = axi_axis_reader_v1_0 \
 				axis_packetizer_v1_0 \
 				axis_phase_generator_v1_0 \
 				axis_ram_writer_v1_0 \
-				axis_rp_adc_v3_0 \
-				axis_rp_dac_v2_0 \
+				axis_rp_adc_v1_0 \
+				axis_rp_dac_v1_0 \
 				axis_tlast_gen_v1_0 \
 				axis_trigger_v1_0 \
 				axis_validator_v1_0 \

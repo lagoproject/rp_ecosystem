@@ -262,7 +262,7 @@ int mem_init(void)
 		return -1;
 	}
 
-	dev_size = 1024*sysconf(_SC_PAGESIZE);
+	dev_size = 2048*sysconf(_SC_PAGESIZE);
 
 	// mmap the mem device into user space 
 	mem_ptr = mmap(NULL, dev_size, PROT_READ|PROT_WRITE, MAP_SHARED, mem_fd, 0x1E000000);
