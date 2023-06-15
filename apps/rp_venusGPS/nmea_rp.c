@@ -112,7 +112,7 @@ void rp_NmeaParseGpgga(char *nmea, gpgga_t *loc){
 	loc->quality = (uint8_t)atoi(ptr);
 
 	ptr = strchr(ptr, ',')+1;
-	loc->satellites = (uint8_t)atoi(ptr);
+	loc->satellite = (uint8_t)atoi(ptr);
 
 	ptr = strchr(ptr, ',')+1;
 

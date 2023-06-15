@@ -41,30 +41,31 @@ typedef struct{
     int second;
 }DATE_TIME;
 
-//typedef struct gdata{
-//    double  latitude;         // longitud
-//    double  longitude;        // Latitud
-//    int     latitude_Degree;  // grado
-//    int     latitude_Cent;    // min
-//    int     latitude_Second;  // segundos
-//    int     longitude_Degree; // grado
-//    int     longitude_Cent;   // min
-//    int     longitude_Second; // segundos
-//    float   speed;            // velocidad
-//    float   direction;        // rumbo
-//    float   height;           // altitud
-//    int     satellite;
-//    uint8_t NS;
-//    uint8_t EW;
-//    DATE_TIME D;
-//}GPS_INFO;
+typedef struct gdata{
+    double  latitude;         // longitud
+    double  longitude;        // Latitud
+    int     latitude_Degree;  // grado
+    int     latitude_Cent;    // min
+    int     latitude_Second;  // segundos
+    int     longitude_Degree; // grado
+    int     longitude_Cent;   // min
+    int     longitude_Second; // segundos
+    float   speed;            // velocidad
+    float   course;           // rumbo
+    float   height;           // altitud
+    int     satellite;
+    uint8_t quality;
+    uint8_t NS;
+    uint8_t EW;
+    DATE_TIME D;
+}GPS_INFO;
 
 typedef struct gpgga {
     double gtime;
     double latitude;
     double longitude;
     uint8_t quality;
-    uint8_t satellites;
+    uint8_t satellite;
     float   height;           // altitud
     char    NS;
     char    EW;

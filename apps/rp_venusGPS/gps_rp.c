@@ -41,6 +41,7 @@ void gps_location(loc_t *coord) {
         coord->latitude = gpgga.latitude;
         coord->longitude = gpgga.longitude;
         coord->height = gpgga.height;
+        coord->satellite = gpgga.satellite;
 
         status |= NMEA_GPGGA;
         break;

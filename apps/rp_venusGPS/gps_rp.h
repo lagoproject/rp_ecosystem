@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <inttypes.h>
 
 typedef struct{
     int year;
@@ -27,7 +28,6 @@ typedef struct{
     int minute;
     int second;
 }DTIME;
-
 
 typedef struct location {
     //double gtime;
